@@ -39,6 +39,9 @@ function validateForm() {
 // email//
 
 var Email = document.myForm.Email.value;
+var atpos = Email.indexOf("@");
+var dotpos = Email.lastIndexOf(".");
+
     console.log(Email);
     if (Email==null || Email==="") {
     alert("Email must be filled out");
@@ -56,6 +59,13 @@ var Email = document.myForm.Email.value;
     return false;
     }
 
+    if (atpos< 1 || dotpos<atpos+2 || dotpos+2>=Email.length) {
+        alert("Enter valid email");
+        return false;
+    
+    }
+
+    
 // phone//
 
 var Phone = document.myForm.Phone.value;
