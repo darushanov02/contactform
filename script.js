@@ -119,50 +119,66 @@ if (country === "USA") {
     
 
 var Username = document.myForm.Username.value;
-    console.log(Username);
-    if (Username==null || Username==="") {
-    alert("Username must be filled out");
+var usernameError = document.getElementById("username-error");
+
+console.log(Username);
+if (Username === null || Username === "") {
+    usernameError.textContent = "Username must be filled out";
     return false;
-    }
-    console.log(Username.length);
-    if (Username.length >12 )
-    {
-    alert("User name requires 12 character maximum");
+} else {
+    usernameError.textContent = "";
+}
+
+console.log(Username.length);
+if (Username.length > 12) {
+    usernameError.textContent = "Username requires a maximum of 12 characters";
     return false;
-    
-    }
-   
+} else {
+    usernameError.textContent = "";
+}
 
 
 
     // Password //
     
 
-var password = document.myForm.password.value;
+    var password = document.myForm.password.value;
+    var passwordError = document.getElementById("password-error");
+    
     console.log(password);
-    if (password==null || password==="") {
-    alert("Password must be filled out");
-    return false;
+    if (password == null || password === "") {
+        passwordError.textContent = "Password must be filled out";
+        return false;
+    } else {
+        passwordError.textContent = "";
     }
+    
     console.log(password.length);
-    if (password.length < 7)
-    {
-    alert("Password minimim is 7 characters ");
-    return false;
+    if (password.length < 7) {
+        passwordError.textContent = "Password minimum is 7 characters";
+        return false;
+    } else {
+        passwordError.textContent = "";
     }
-
+    
     if (!/[A-Z]/.test(password)) {
-        alert("Password must contain at least one uppercase letter");
+        passwordError.textContent = "Password must contain at least one uppercase letter";
         return false;
+    } else {
+        passwordError.textContent = "";
     }
-
+    
     if (!/[a-z]/.test(password)) {
-        alert("Password must contain at least one uppercase letter");
+        passwordError.textContent = "Password must contain at least one lowercase letter";
         return false;
+    } else {
+        passwordError.textContent = "";
     }
-
+    
     if (!/[!@#$%^&*]/.test(password)) {
-        alert("Password must contain at least one special character");
+        passwordError.textContent = "Password must contain at least one special character";
         return false;
+    } else {
+        passwordError.textContent = "";
     }
-    }
+}
