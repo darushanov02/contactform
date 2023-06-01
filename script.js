@@ -47,13 +47,7 @@ var dotpos = Email.lastIndexOf(".");
     alert("Email must be filled out");
     return false;
     }
-    console.log(Email.length);
-    if (Email.length > 20)
-    {
-    alert("Email can not be more than 20 charatcers");
-    return false;
     
-    }
     if (!isNaN(Email)) {
     alert("Email cannot be a number");
     return false;
@@ -69,19 +63,13 @@ var dotpos = Email.lastIndexOf(".");
 // phone//
 
 var Phone = document.myForm.Phone.value;
+var numbers=/^[0-9]+$/;
     console.log(Phone);
-    if (Phone==null || Phone==="") {
-    alert("Phone must be filled out");
-    return false;
-    }
-    console.log(Phone.length);
-    if (Phone.length > 15 || isNaN(Phone))
-    {
-    alert("Invalid Phone number");
-    return false;
     
+    if (Phone === null || Phone === "" || Phone.length > 15 || !Phone.match(/^\d+$/)) {
+        alert("Invalid Phone number");
+        return false;
     }
-    
 
 
 
@@ -117,9 +105,9 @@ var Username = document.myForm.Username.value;
     return false;
     }
     console.log(Username.length);
-    if (Username.length <12 )
+    if (Username.length >12 )
     {
-    alert("12 character maximum");
+    alert("User name requires 12 character maximum");
     return false;
     
     }
@@ -139,10 +127,22 @@ var password = document.myForm.password.value;
     console.log(password.length);
     if (password.length < 7)
     {
-    alert("Maximum 7 characters ");
+    alert("Password minimim is 7 characters ");
     return false;
-    
     }
-   
-    
+
+    if (!/[A-Z]/.test(password)) {
+        alert("Password must contain at least one uppercase letter");
+        return false;
+    }
+
+    if (!/[a-z]/.test(password)) {
+        alert("Password must contain at least one uppercase letter");
+        return false;
+    }
+
+    if (!/[!@#$%^&*]/.test(password)) {
+        alert("Password must contain at least one special character");
+        return false;
+    }
     }
