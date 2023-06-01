@@ -93,7 +93,23 @@ var city = document.myForm.city.value;
     return false;
     }
 
+// zip//
 
+var country = document.getElementById("Country").value;
+
+if (country === "USA") {
+    var zipcode = document.getElementById("zipcode").value;
+
+    if (zipcode === null || zipcode === "" || !/^\d{5}$/.test(zipcode)) {
+        // Zip code validation rules
+        alert("Please enter a zipcode");
+        return false;
+    }
+}
+else {
+    // Zip code is not required for non-USA countries
+    // For example: validZipcode = true;
+}
 
 // username //
     
