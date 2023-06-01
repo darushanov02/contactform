@@ -1,12 +1,9 @@
-#nameError {
-    display: none;
-    font-size: 0.8em;
+.zipcode-error{
+  color:red;
   }
   
   #nameError.visible {
     display: block;
   }
   
-  input.invalid {
-    border-color: red;
-  }
+  

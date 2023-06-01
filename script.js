@@ -1,97 +1,100 @@
 function validateForm() {
     var FirstName = document.myForm.FirstName.value;
-    console.log(FirstName);
-    if (FirstName==null || FirstName==="") {
-    alert("First name must be filled out");
-    return false;
+    var firstnameError = document.getElementById("firstname-error");
+
+    if (FirstName === null || FirstName === "") {
+        firstnameError.textContent = "First name must be filled out";
+        return false;
+    } else {
+        firstnameError.textContent = "";
     }
-    console.log(FirstName.length);
-    if (FirstName.length > 20)
-    {
-    alert("First Name can not be more than 20 charatcers");
-    return false;
-    
+
+    if (FirstName.length > 20) {
+        firstnameError.textContent = "First Name cannot be more than 20 characters";
+        return false;
+    } else {
+        firstnameError.textContent = "";
     }
+
     if (!isNaN(FirstName)) {
-    alert("First Name cannot be a number");
-    return false;
+        firstnameError.textContent = "First Name cannot be a number";
+        return false;
+    } else {
+        firstnameError.textContent = "";
     }
 
-
-    //last name//
-    var LastName = document.myForm.LastName.value;
-    console.log(LastName);
-    if (LastName==null || LastName==="") {
-    alert("Last name must be filled out");
-    return false;
-    }
-    console.log(LastName.length);
-    if (LastName.length > 50)
-    {
-    alert("Last Name can not be more than 50 charatcers");
-    return false;
-    
-    }
-    if (!isNaN(LastName)) {
-    alert("Last Name cannot be a number");
-    return false;
-    }
 // email//
 
 var Email = document.myForm.Email.value;
 var atpos = Email.indexOf("@");
 var dotpos = Email.lastIndexOf(".");
+var emailError = document.getElementById("email-error");
 
-    console.log(Email);
-    if (Email==null || Email==="") {
-    alert("Email must be filled out");
+console.log(Email);
+if (Email === null || Email === "") {
+    emailError.textContent = "Email must be filled out";
     return false;
-    }
-    
-    if (!isNaN(Email)) {
-    alert("Email cannot be a number");
-    return false;
-    }
+} else {
+    emailError.textContent = "";
+}
 
-    if (atpos< 1 || dotpos<atpos+2 || dotpos+2>=Email.length) {
-        alert("Enter valid email");
-        return false;
-    
-    }
+if (!isNaN(Email)) {
+    emailError.textContent = "Email cannot be a number";
+    return false;
+} else {
+    emailError.textContent = "";
+}
+
+if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= Email.length) {
+    emailError.textContent = "Enter a valid email";
+    return false;
+} else {
+    emailError.textContent = "";
+}
 
     
 // phone//
 
 var Phone = document.myForm.Phone.value;
-var numbers=/^[0-9]+$/;
-    console.log(Phone);
-    
-    if (Phone === null || Phone === "" || Phone.length > 15 || !Phone.match(/^\d+$/)) {
-        alert("Invalid Phone number");
-        return false;
-    }
+var numbers = /^[0-9]+$/;
+var phoneError = document.getElementById("phone-error");
 
+console.log(Phone);
 
-
+if (Phone === null || Phone === "" || Phone.length > 15 || !Phone.match(/^\d+$/)) {
+    phoneError.textContent = "Invalid Phone number";
+    return false;
+} else {
+    phoneError.textContent = "";
+}
 
 
 //address//
 
 var Address = document.myForm.Address.value;
-    console.log(Address);
-    if (Address==null || Address==="") {
-    alert("Address must be filled out");
-    return false;
-    }
+var addressError = document.getElementById("address-error");
 
-//city//
+console.log(Address);
+if (Address === null || Address === "") {
+    addressError.textContent = "Address is required";
+    return false;
+} else {
+    addressError.textContent = "";
+}
+
+// City
 
 var city = document.myForm.city.value;
-    console.log(city);
-    if (city==null || city==="") {
-    alert("City must be filled out");
+var cityError = document.getElementById("city-error");
+
+console.log(city);
+if (city === null || city === "") {
+    cityError.textContent = "City is required";
     return false;
-    }
+} else {
+    cityError.textContent = "";
+}
+
 
 // zip//
 
@@ -99,16 +102,17 @@ var country = document.getElementById("Country").value;
 
 if (country === "USA") {
     var zipcode = document.getElementById("zipcode").value;
+    var zipcodeError = document.getElementById("zipcode-error");
 
     if (zipcode === null || zipcode === "" || !/^\d{5}$/.test(zipcode)) {
-        // Zip code validation rules
-        alert("Please enter a zipcode");
+        zipcodeError.textContent = "Please enter a valid 5-digit ZIP code";
         return false;
+    } else {
+        zipcodeError.textContent = "";
     }
-}
-else {
-    // Zip code is not required for non-USA countries
-    // For example: validZipcode = true;
+} else {
+    var zipcodeError = document.getElementById("zipcode-error");
+    zipcodeError.textContent = "";
 }
 
 // username //
